@@ -1,0 +1,4 @@
+*.swp
+network/default/crypto-config
+network/default/config
+vendor
