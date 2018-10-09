@@ -14,21 +14,21 @@ const (
 	WriteTimeout = time.Duration(10) * time.Second
 )
 
-type server struct {
+type Server struct {
 	RunMode      string
 	Port         int
 	ReadTimeout  time.Duration
 	WriteTimeout time.Duration
 }
 
-var ServerConfig = server{
+var ServerConfig = Server{
 	RunMode:      "debug",
 	Port:         8000,
 	ReadTimeout:  time.Duration(10) * time.Second,
 	WriteTimeout: time.Duration(10) * time.Second,
 }
 
-type fabric struct {
+type Fabric struct {
 	ConfigFile      string
 	OrdererID       string
 	ChannelID       string
@@ -44,7 +44,7 @@ type fabric struct {
 	Peers           []string
 }
 
-var FabricConfig = fabric{
+var FabricConfig = Fabric{
 	ConfigFile:      utils.GetProjectRoot() + "/config/fabric-conn-default.yaml",
 	OrdererID:       "orderer.example.com",
 	ChannelID:       "mychannel",
@@ -54,8 +54,8 @@ var FabricConfig = fabric{
 	ChaincodePath:   "github.com/guoxingx/fabtreehole/chaincode",
 	OrgAdmin:        "Admin",
 	OrgName:         "org1",
-	UserName:        "User1",
-	Members:         []string{"org1.dev.isu.com"},
+	UserName:        "Admin",
+	Members:         []string{"org1.example.com"},
 	Version:         "0.1",
-	Peers:           []string{"peer0.org1.dev.isu.com", "peer1.org1.dev.isu.com"},
+	Peers:           []string{"peer0.org1.example.com"},
 }

@@ -38,8 +38,6 @@ channels:
         ledgerQuery: true
         eventSource: true
 
-      peer1.org1.example.com:
-
     policies:
       queryChannelConfig:
         minResponses: 1
@@ -56,7 +54,6 @@ organizations:
     cryptoPath: peerOrganizations/org1.example.com/users/{userName}@org1.example.com/msp
     peers:
       - peer0.org1.example.com
-      - peer1.org1.example.com
 
     certificateAuthorities:
       - ca.org1.example.com
@@ -91,21 +88,6 @@ peers:
     tlsCACerts:
       path: ${GOPATH}/src/github.com/guoxingx/fabtreehole/network/default/crypto-config/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem
 
-  peer1.org1.example.com:
-    url: localhost:8051
-    eventUrl: localhost:8053
-
-    grpcOptions:
-      ssl-target-name-override: peer1.org1.example.com
-      keep-alive-time: 0s
-      keep-alive-timeout: 20s
-      keep-alive-permit: false
-      fail-fast: false
-      allow-insecure: false
-
-    tlsCACerts:
-      path: ${GOPATH}/src/github.com/guoxingx/fabtreehole/network/default/crypto-config/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem
-
 certificateAuthorities:
   ca.org1.example.com:
     url: http://localhost:7054
@@ -125,12 +107,6 @@ entityMatchers:
       eventUrlSubstitutionExp: localhost:7053
       sslTargetOverrideUrlSubstitutionExp: peer0.org1.example.com
       mappedHost: peer0.org1.example.com
-
-    - pattern: (\w*)peer1.org1.example.com(\w*)
-      urlSubstitutionExp: localhost:8051
-      eventUrlSubstitutionExp: localhost:8053
-      sslTargetOverrideUrlSubstitutionExp: peer1.org1.example.com
-      mappedHost: peer1.org1.example.com
 
   orderer:
     - pattern: (\w*)orderer.example.com(\w*)

@@ -2,6 +2,7 @@ package fabconn
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/hyperledger/fabric-sdk-go/pkg/client/channel"
 )
@@ -39,7 +40,7 @@ func Transact(req RawRequest) (string, error) {
 	if req.EventID != "" {
 		return sendTransactWithEvent(request, req.EventID)
 	}
-	return sendTransact(request), nil
+	return sendTransact(request)
 }
 
 // send request to fabric
